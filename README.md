@@ -1,4 +1,4 @@
-# 🧵 Multi-Stage x86 Bootloader with Kernel Loader
+# Multi-Stage x86 Bootloader with Kernel Loader
 
 This project implements a minimal **multi-stage bootloader** targeting the x86 architecture. It showcases how to manually construct a bootable disk image that includes:
 
@@ -9,7 +9,7 @@ This project implements a minimal **multi-stage bootloader** targeting the x86 a
 
 ---
 
-## 🗂️ Project Files
+## Project Files
 
 | File           | Description |
 |----------------|-------------|
@@ -21,7 +21,7 @@ This project implements a minimal **multi-stage bootloader** targeting the x86 a
 
 ---
 
-## 🧠 Boot Flow Overview
+## Boot Flow Overview
 
 ```
 BIOS → [boot1 (MBR)] → [boot2 (LBA 1)] → [kernel (LBA 2–21)]
@@ -43,15 +43,15 @@ BIOS → [boot1 (MBR)] → [boot2 (LBA 1)] → [kernel (LBA 2–21)]
 
 ---
 
-## 🛠️ Build & Execution
+## Build & Execution
 
-### 🔧 Requirements
+### Requirements
 
 - `nasm` — x86 assembler (e.g. via `sudo apt install nasm`)
 - `qemu-system-i386` — to emulate BIOS + MBR (e.g. via `sudo apt install qemu-system`)
 - `make`, `dd`, POSIX shell tools
 
-### ⚙️ Targets
+### Targets
 
 ```bash
 make            # Build and launch QEMU
@@ -73,7 +73,7 @@ make clean      # Remove binaries and disk image
 
 ---
 
-## 💾 Disk Layout
+## Disk Layout
 
 ```
 disk.img (512 * 100 bytes)
@@ -91,7 +91,7 @@ All writes use `dd` with `conv=notrunc` to prevent truncating the disk image.
 
 ---
 
-## 🧪 QEMU Launch
+## QEMU Launch
 
 ```bash
 qemu-system-i386 -fda disk.img
@@ -104,7 +104,7 @@ If your kernel performs graphics or input/output, use QEMU flags accordingly (e.
 
 ---
 
-## 🚧 Notes & Caveats
+## Notes & Caveats
 
 - Ensure `boot1.bin` is **exactly 512 bytes** and ends with the **boot signature `0x55AA`**.
 - `boot2.asm` and `kernel.asm` must fit within their allocated sizes.
@@ -112,7 +112,7 @@ If your kernel performs graphics or input/output, use QEMU flags accordingly (e.
 
 ---
 
-## 📚 Learn More
+## Learn More
 
 This project is educational and great for understanding:
 
@@ -128,7 +128,7 @@ For deeper understanding, you may explore:
 
 ---
 
-## 🧼 Cleanup
+## Cleanup
 
 ```bash
 make clean
